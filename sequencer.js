@@ -148,8 +148,7 @@ var Sequencer = function(){
 
 $(function(){
 var seq = new Sequencer();
-
-    var note = 0;
+var note = 0;
 var time = 0;
 var current_track = 0;
 
@@ -161,6 +160,14 @@ $("#track").change(function(){
     restore();
 });
 
+$("#clear").bind("click", function(){
+    
+    for(var i=0; i<LENGTH_PATTERN; i++){
+        seq.removePattern(current_track, i);
+    }
+    restore();
+});
+    
 $("td").each(function(){
     $(this).addClass("off");
 });
@@ -191,8 +198,11 @@ $("#play").bind("click", function play(){
 });
 
 
-
 function restore(){
+    $("td").each(function(){
+        $(this).removeClass().addClass("off");
+    });
+    
     var pattern = seq.getPattern(current_track);
     for(var i=0; i<pattern.length; i++){
         if(pattern[i]){
