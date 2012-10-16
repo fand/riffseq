@@ -1,0 +1,40 @@
+<html>
+<title>wave generator</title>
+<script src="riffwave.js"></script>
+<script src="riff.js"></script>
+<script>
+
+  var riff = new Riff();
+  
+  function play(){
+    var shape = document.form1.shape.value;
+    var freq = document.form1.freq.value;
+    var length = document.form1.length.value;
+    var pan = document.form1.pan.value;
+    var vol = document.form1.vol.value;
+    riff.synthesize(shape, freq, pan, vol, length);
+    riff.play();
+  }
+
+</script>
+<body>
+
+<form name="form1">
+  wave: <select name="shape">
+    <option> SINE </option>
+    <option> SAW </option>
+    <option> RECT </option>
+    <option> NOISE </option>
+  </select><br>
+  freq: <input name="freq" min="60" max="4000" value="440" type="number"> Hz<br>
+  length: <input name="length" min="0" max="10" value="1" type="number"> sec.<br>
+  pan: <input name="pan" type="range" min="-128" max="127"><br>
+  volume: <input name="vol" type="range" min="0" max="99"><br>
+  <input type="button" onClick="play()" value="play" />
+</form>
+
+
+
+<p style="color:#DDD;">This is a tone generator using riffwave(http://codebase.es/riffwave/).</p>
+</body>
+</html>

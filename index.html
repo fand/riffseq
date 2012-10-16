@@ -1,0 +1,170 @@
+<html>
+<title>sequencer</title>
+<link rel="stylesheet" href="riff.css" />
+<script src="jquery.min.js"></script>
+<script src="riffwave.js"></script>
+<script src="riff.js"></script>
+<script src="sequencer.js"></script>
+<body>
+<form name="control">
+mode: <select name="mode">
+    <option>IONIAN</option>
+    <option>DORIAN</option>
+    <option>PHRYGIAN</option>
+    <option>LYDIAN</option>
+    <option>MIXOLYDIAN</option>
+    <option>AEOLIAN</option>
+    <option>LOCRIAN</option>
+</select>
+ BPM: <input name="bpm" min="60" max="240" value="120" type="number"><br>
+<input type="button" id="play" value="play" />
+</form>
+<hr>
+<select name="track" id="track">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+</select>
+<input type="button" id="clear" value="clear" />
+<table>
+  <tr note="10">
+    <td>0</td><td>1</td><td>2</td><td>3</td>
+    <td>4</td><td>5</td><td>6</td><td>7</td>
+    <td>8</td><td>9</td><td>10</td><td>11</td>
+    <td>12</td><td>13</td><td>14</td><td>15</td>
+    <td>16</td><td>17</td><td>18</td><td>19</td>
+    <td>20</td><td>21</td><td>22</td><td>23</td>
+    <td>24</td><td>25</td><td>26</td><td>27</td>
+    <td>28</td><td>29</td><td>30</td><td>31</td>
+  </tr>
+  <tr note="9">
+    <td>0</td><td>1</td><td>2</td><td>3</td>
+    <td>4</td><td>5</td><td>6</td><td>7</td>
+    <td>8</td><td>9</td><td>10</td><td>11</td>
+    <td>12</td><td>13</td><td>14</td><td>15</td>
+    <td>16</td><td>17</td><td>18</td><td>19</td>
+    <td>20</td><td>21</td><td>22</td><td>23</td>
+    <td>24</td><td>25</td><td>26</td><td>27</td>
+    <td>28</td><td>29</td><td>30</td><td>31</td>
+  </tr>
+  <tr note="8">
+    <td>0</td><td>1</td><td>2</td><td>3</td>
+    <td>4</td><td>5</td><td>6</td><td>7</td>
+    <td>8</td><td>9</td><td>10</td><td>11</td>
+    <td>12</td><td>13</td><td>14</td><td>15</td>
+    <td>16</td><td>17</td><td>18</td><td>19</td>
+    <td>20</td><td>21</td><td>22</td><td>23</td>
+    <td>24</td><td>25</td><td>26</td><td>27</td>
+    <td>28</td><td>29</td><td>30</td><td>31</td>
+  </tr>
+  <tr note="7">
+    <td>0</td><td>1</td><td>2</td><td>3</td>
+    <td>4</td><td>5</td><td>6</td><td>7</td>
+    <td>8</td><td>9</td><td>10</td><td>11</td>
+    <td>12</td><td>13</td><td>14</td><td>15</td>
+    <td>16</td><td>17</td><td>18</td><td>19</td>
+    <td>20</td><td>21</td><td>22</td><td>23</td>
+    <td>24</td><td>25</td><td>26</td><td>27</td>
+    <td>28</td><td>29</td><td>30</td><td>31</td>
+  </tr>
+  <tr note="6">
+    <td>0</td><td>1</td><td>2</td><td>3</td>
+    <td>4</td><td>5</td><td>6</td><td>7</td>
+    <td>8</td><td>9</td><td>10</td><td>11</td>
+    <td>12</td><td>13</td><td>14</td><td>15</td>
+    <td>16</td><td>17</td><td>18</td><td>19</td>
+    <td>20</td><td>21</td><td>22</td><td>23</td>
+    <td>24</td><td>25</td><td>26</td><td>27</td>
+    <td>28</td><td>29</td><td>30</td><td>31</td>
+  </tr>
+  <tr note="5">
+    <td>0</td><td>1</td><td>2</td><td>3</td>
+    <td>4</td><td>5</td><td>6</td><td>7</td>
+    <td>8</td><td>9</td><td>10</td><td>11</td>
+    <td>12</td><td>13</td><td>14</td><td>15</td>
+    <td>16</td><td>17</td><td>18</td><td>19</td>
+    <td>20</td><td>21</td><td>22</td><td>23</td>
+    <td>24</td><td>25</td><td>26</td><td>27</td>
+    <td>28</td><td>29</td><td>30</td><td>31</td>
+  </tr>
+  <tr note="4">
+    <td>0</td><td>1</td><td>2</td><td>3</td>
+    <td>4</td><td>5</td><td>6</td><td>7</td>
+    <td>8</td><td>9</td><td>10</td><td>11</td>
+    <td>12</td><td>13</td><td>14</td><td>15</td>
+    <td>16</td><td>17</td><td>18</td><td>19</td>
+    <td>20</td><td>21</td><td>22</td><td>23</td>
+    <td>24</td><td>25</td><td>26</td><td>27</td>
+    <td>28</td><td>29</td><td>30</td><td>31</td>
+  </tr>
+  <tr note="3">
+    <td>0</td><td>1</td><td>2</td><td>3</td>
+    <td>4</td><td>5</td><td>6</td><td>7</td>
+    <td>8</td><td>9</td><td>10</td><td>11</td>
+    <td>12</td><td>13</td><td>14</td><td>15</td>
+    <td>16</td><td>17</td><td>18</td><td>19</td>
+    <td>20</td><td>21</td><td>22</td><td>23</td>
+    <td>24</td><td>25</td><td>26</td><td>27</td>
+    <td>28</td><td>29</td><td>30</td><td>31</td>
+  </tr>
+  <tr note="2">
+    <td>0</td><td>1</td><td>2</td><td>3</td>
+    <td>4</td><td>5</td><td>6</td><td>7</td>
+    <td>8</td><td>9</td><td>10</td><td>11</td>
+    <td>12</td><td>13</td><td>14</td><td>15</td>
+    <td>16</td><td>17</td><td>18</td><td>19</td>
+    <td>20</td><td>21</td><td>22</td><td>23</td>
+    <td>24</td><td>25</td><td>26</td><td>27</td>
+    <td>28</td><td>29</td><td>30</td><td>31</td>
+  </tr>
+  <tr note="1">
+    <td>0</td><td>1</td><td>2</td><td>3</td>
+    <td>4</td><td>5</td><td>6</td><td>7</td>
+    <td>8</td><td>9</td><td>10</td><td>11</td>
+    <td>12</td><td>13</td><td>14</td><td>15</td>
+    <td>16</td><td>17</td><td>18</td><td>19</td>
+    <td>20</td><td>21</td><td>22</td><td>23</td>
+    <td>24</td><td>25</td><td>26</td><td>27</td>
+    <td>28</td><td>29</td><td>30</td><td>31</td>
+  </tr>
+  </table>
+<hr>
+<form name="wave0">
+  wave: <select name="shape">
+    <option> SINE </option>
+    <option> SAW </option>
+    <option selected="selected"> RECT </option>
+    <option> NOISE </option>
+  </select><br>
+  octave: <input name="octave" min="0" max="5" value="2" type="number"><br>
+  pan: <input name="pan" type="range" min="-128" max="127"><br>
+  volume: <input name="vol" type="range" min="0" max="99" value="25"><br>
+</form>
+
+<form name="wave1">
+  wave: <select name="shape">
+    <option> SINE </option>
+    <option> SAW </option>
+    <option> RECT </option>
+    <option> NOISE </option>
+  </select><br>
+  octave: <input name="octave" min="0" max="5" value="3" type="number"><br>
+  pan: <input name="pan" type="range" min="-128" max="127" value="-100"><br>
+  volume: <input name="vol" type="range" min="0" max="99" value="30"><br>
+</form>
+
+<form name="wave2">
+  wave: <select name="shape">
+    <option> SINE </option>
+    <option> SAW </option>
+    <option> RECT </option>
+    <option> NOISE </option>
+  </select><br>
+  octave: <input name="octave" min="0" max="5" value="3" type="number"><br>
+  pan: <input name="pan" type="range" min="-128" max="127" value="100"><br>
+  volume: <input name="vol" type="range" min="0" max="99"><br>
+</form>
+
+<p style="color:#DDD;">This is a tone generator using riffwave(http://codebase.es/riffwave/).</p>
+</body>
+</html>
