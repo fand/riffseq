@@ -24,15 +24,14 @@ var Riff = function(){
     };
 
     this.setLength = function(len){
-        var target_length = len * this.wave.header.sampleRate * 2;
-        if(this.data.length < target_length){
+        if(this.data.length < len){
             var length_before = this.data.length;
-            this.data.length = target_length;
-            for(var i=length_before; i<target_length; i++){
+            this.data.length = len;
+            for(var i=length_before; i<len; i++){
                 this.data[i] = 128;
             }
         }else{
-            this.data.length = target_length;
+            this.data.length = len;
         }
     };
 

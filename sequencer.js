@@ -1,4 +1,5 @@
 const SAMPLE_RATE = 44100;
+const LENGTH_PATTERN = 32;
 const ratio = 1.05946309;
 const scale = {
         "IONIAN": [0,2,4,5,7,9,11,12,14,16],
@@ -64,6 +65,7 @@ var Sequencer = function(){
     this.riff = new Riff();
     this.mode = "IONIAN";
     this.bpm = 120;
+    this.onka = 22050;
     this.track = [new Track(), new Track(), new Track()];
 
     // デモ用パターン
@@ -76,7 +78,7 @@ var Sequencer = function(){
     this.setParam =  function(){
         this.mode = document.control.mode.value;    
         this.bpm = document.control.bpm.value;
-        
+        this.onka = Math.floor((60.0 / (this.bpm * 4.0) * SAMPLE_RATE))// ここのfloorがないと、lrが入れ替わる
         for(var i=0; i<this.track.length; i++){
             this.track[i].setParam(i);
         }
@@ -93,8 +95,6 @@ var Sequencer = function(){
     };
     
     this.synth = function(){
-        var onka_sec = (60.0 / this.bpm) / 4.0;
-        var onka = Math.floor(onka_sec * 44100);    // ここのfloorがないと、lrが入れ替わる
         for(var i=0; i<this.track.length; i++){
             var freq = this.track[i].getFreq(this.mode);
             var param = this.track[i].getParam();
@@ -104,8 +104,8 @@ var Sequencer = function(){
                                      freq[j],
                                      param["pan"],
                                      param["vol"],
-                                     onka * j,
-                                     onka * (j+1)
+                                     this.onka * j,
+                                     this.onka * (j+1)
                                     );
                 }
             }
@@ -128,8 +128,7 @@ var Sequencer = function(){
         this.riff.clear();
         
         this.setParam();
-        var length_sec = (60.0/this.bpm)*16;
-        this.riff.setLength(length_sec);
+        this.riff.setLength(this.onka * LENGTH_PATTERN * 2);
         this.synth();
         this.riff.play();
 //        this.data = this.riff.getData();
